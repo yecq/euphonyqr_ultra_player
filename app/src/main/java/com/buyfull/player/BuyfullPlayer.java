@@ -3,6 +3,8 @@ package com.buyfull.player;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 public class BuyfullPlayer {
@@ -65,6 +67,17 @@ public class BuyfullPlayer {
                 e.printStackTrace();
             }
             mTrack = null;
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void setVolume(float volume){
+        if (mTrack != null && mTrack.getState() == AudioTrack.STATE_INITIALIZED){
+            try {
+                mTrack.setVolume(volume);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 }

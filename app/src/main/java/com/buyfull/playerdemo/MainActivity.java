@@ -1,5 +1,6 @@
 package com.buyfull.playerdemo;
 
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
             is.read(wav);
             is.close();
             player.setDataSource(wav);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                player.setVolume(0.5f);
+            }
             player.play();
         }catch (Exception e){
             e.printStackTrace();
