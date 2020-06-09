@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
             is.read(wav);
             is.close();
             player.setDataSource(wav);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                player.setVolume(0.5f);
-            }
+            player.setVolume(0.5f);
             player.play();
         }catch (Exception e){
             e.printStackTrace();

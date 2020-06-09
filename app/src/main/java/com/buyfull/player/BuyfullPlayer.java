@@ -70,14 +70,22 @@ public class BuyfullPlayer {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setVolume(float volume){
         if (mTrack != null && mTrack.getState() == AudioTrack.STATE_INITIALIZED){
-            try {
-                mTrack.setVolume(volume);
-            }catch (Exception e){
-                e.printStackTrace();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                try {
+                    mTrack.setVolume(volume);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }else{
+                try {
+                    mTrack.setStereoVolume(volume,volume);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
+
         }
     }
 }
