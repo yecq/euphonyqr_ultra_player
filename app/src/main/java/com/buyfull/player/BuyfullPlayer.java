@@ -24,7 +24,7 @@ public class BuyfullPlayer {
             return false;
         }
 
-        mTrack.setLoopPoints( 48*1000, 48*2000,-1);
+        mTrack.setLoopPoints(0, 48*1000,-1);
 
         if (mTrack.getState() == AudioTrack.STATE_INITIALIZED)
             return true;
